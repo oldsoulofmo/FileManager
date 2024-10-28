@@ -10,20 +10,34 @@ string type = Console.ReadLine();
 if (type == "file")
 {
     Console.WriteLine("Enter the path to the file");
-    string path = Console.ReadLine();  
-    files = Directory.EnumerateFiles(@path,"*.cs",SearchOption.AllDirectories);
-    foreach (var file in files) 
+    string path = Console.ReadLine();
+    try
     {
-        Console.WriteLine(file);
+        files = Directory.EnumerateFiles(@path, "*.cs", SearchOption.AllDirectories);
+        foreach (var file in files)
+        {
+            Console.WriteLine(file);
+        }
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Error: {e.Message}");
     }
 } else if (type == "folder")
 {
     Console.WriteLine("Enter the path to the folder");
     string path = Console.ReadLine();
-    listOfDirectories = Directory.EnumerateDirectories(path);
-    foreach (var VARIABLE in listOfDirectories)
+    try
     {
-        Console.WriteLine(VARIABLE);
+        listOfDirectories = Directory.EnumerateDirectories(path);
+        foreach (var dir in listOfDirectories)
+        {
+            Console.WriteLine(dir);
+        }
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Error: {e.Message}");
     }
 
 
